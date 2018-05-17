@@ -10,8 +10,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 /**
  * FMXL Controller class
@@ -129,9 +132,34 @@ public class MainController implements Initializable{
     }
 
     /**
+     * This method loads data from a text file
+     */
+    //Load array
+    public ObservableList<Person> getPeople() {
+        ObservableList<Person> people = FXCollections.observableArrayList();
+        Scanner input = null;
+        String line = null;
+
+        try {
+            input = new Scanner(new File("C:\\Data\\Database2.txt"));
+            while (input.hasNextLine()) {
+                String data[] = input.nextLine().split(",");
+                people.add(new Person(data[0], data[1], data[2], data[3], data[4], data[5]));
+            }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("No Such File.");
+            System.exit(0);
+        }
+
+        input.close();
+        return people;
+    }
+
+    /**
      *  This method will return an ObservableList of People objects
      */
-    public ObservableList<Person> getPeople() {
+ /*   public ObservableList<Person> getPeople() {
         ObservableList<Person> people = FXCollections.observableArrayList();
         people.add(new Person("Roy Jones", "roy.image", "Working at KPMG", "M", "23", "VIC"));
         people.add(new Person("Mary Jones", "mary.image", "Working at IBM", "F", "27", "VIC"));
@@ -145,9 +173,7 @@ public class MainController implements Initializable{
 
 
         return people;
-    }
-
-
+    } */
 
 
 /*    public void comboChanged(ActionEvent actionEvent) {
