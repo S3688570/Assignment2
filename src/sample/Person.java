@@ -37,7 +37,7 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name = new SimpleStringProperty(name);
     }
 
     public String getImage() {

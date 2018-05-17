@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,6 +46,15 @@ public class MainController implements Initializable{
     @FXML
 //    public TableView<String> listview;
 
+    /**
+     * This method will allow the user to double click  on a cell and update
+     * the data
+     */
+    public void changeNameCellEvent(TableColumn.CellEditEvent editedCell) {
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setName(editedCell.getNewValue().toString());
+    }
+
 
 
     @Override
@@ -58,6 +69,10 @@ public class MainController implements Initializable{
 
         //Load data
         tableView.setItems(getPeople());
+
+        //Update table to allow for name fields to be editable
+        tableView.setEditable(true);
+        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
     //    listview.setItems(list);
     //    listview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

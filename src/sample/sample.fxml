@@ -36,7 +36,7 @@
             <Button layoutX="88.0" layoutY="67.0" mnemonicParsing="false" text="Print Profile" />
             <TableView fx:id="tableView" layoutY="252.0" prefHeight="200.0" prefWidth="341.0">
               <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="165.66668701171875" text="Name" />
+                <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="165.66668701171875" text="Name" />
                 <TableColumn fx:id="imageColumn" prefWidth="129.33331298828125" text="Image" />
                   <TableColumn fx:id="statusColumn" prefWidth="263.3333435058594" text="Status" />
                   <TableColumn fx:id="genderColumn" prefWidth="53.66668701171875" text="Gender" />
