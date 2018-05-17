@@ -49,7 +49,7 @@ public class Person {
     }
 
     public void setImage(String image) {
-        this.image.set(image);
+        this.image = new SimpleStringProperty(image);
     }
 
     public String getStatus() {
@@ -61,7 +61,7 @@ public class Person {
     }
 
     public void setStatus(String status) {
-        this.status.set(status);
+        this.status = new SimpleStringProperty(status);
     }
 
     public String getGender() {
@@ -73,7 +73,7 @@ public class Person {
     }
 
     public void setGender(String gender) {
-        this.gender.set(gender);
+        this.gender = new SimpleStringProperty(gender);
     }
 
     public String getAge() {
@@ -85,7 +85,7 @@ public class Person {
     }
 
     public void setAge(String age) {
-        this.age.set(age);
+        this.age = new SimpleStringProperty(age);
     }
 
     public String getState() {
@@ -97,7 +97,7 @@ public class Person {
     }
 
     public void setState(String state) {
-        this.state.set(state);
+        this.state = new SimpleStringProperty(state);
     }
 }
 
