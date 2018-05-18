@@ -1,9 +1,13 @@
+
+
 package sample;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Relationships extends Person{
-    private String firstFriend;
-    private String secondFriend;
-    private String relationship;
+    private SimpleStringProperty firstFriend;
+    private SimpleStringProperty secondFriend;
+    private SimpleStringProperty relationship;
 
     //Construct default constructor
     public Relationships() {
@@ -11,37 +15,42 @@ public class Relationships extends Person{
     }
 
     public Relationships(String firstFriend, String secondFriend, String relationship) {
-        this.firstFriend = firstFriend;
-        this.secondFriend = secondFriend;
-        this.relationship = relationship;
+        this.firstFriend = new SimpleStringProperty(firstFriend);
+        this.secondFriend = new SimpleStringProperty(secondFriend);
+        this.relationship = new SimpleStringProperty(relationship);
     }
 
     public String getFirstFriend() {
+        return firstFriend.get();
+    }
+    public SimpleStringProperty firstFriendProperty() {
         return firstFriend;
     }
 
     public String getSecondFriend() {
+        return secondFriend.get();
+    }
+    public SimpleStringProperty secondFriendProperty() {
         return secondFriend;
     }
 
     public String getRelationship() {
+        return relationship.get();
+    }
+    public SimpleStringProperty relationshipProperty() {
         return relationship;
     }
 
     public void setFirstFriend(String firstFriend) {
-        this.firstFriend = firstFriend;
+        this.firstFriend = new SimpleStringProperty(firstFriend);
     }
 
     public void setSecondFriend(String secondFriend) {
-        this.secondFriend = secondFriend;
+        this.secondFriend = new SimpleStringProperty(secondFriend);
     }
 
     public void setRelationship(String relationship) {
-        this.relationship = relationship;
+        this.relationship = new SimpleStringProperty(relationship);
     }
 
-    public String toString() {
-        return "\n" + "First Person: " + getFirstFriend() + "\nSecond Person: " + getSecondFriend() + "\nRelationship: " + getRelationship();
-    }
 }
-
