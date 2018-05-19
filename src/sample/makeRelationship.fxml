@@ -61,7 +61,7 @@
                         <Button layoutX="106.0" layoutY="167.0" mnemonicParsing="false" text="Collegues" />
                         <Button layoutX="101.0" layoutY="208.0" mnemonicParsing="false" text="Classmates" />
                         <Button layoutX="73.0" layoutY="311.0" mnemonicParsing="false" onAction="#relationshipScreenButtonPushed" text="Database" />
-                        <Button layoutX="60.0" layoutY="256.0" mnemonicParsing="false" text="Rleationship" />
+                        <Button layoutX="60.0" layoutY="256.0" mnemonicParsing="false" text="Relationship" />
                     </children>
                 </AnchorPane>
             </right>
