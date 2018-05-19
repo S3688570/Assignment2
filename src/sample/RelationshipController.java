@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.org.apache.xml.internal.security.Init;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,9 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -45,9 +42,19 @@ public class RelationshipController implements Initializable {
     @FXML
     private javafx.scene.control.TextField relationshipField;
 
+    @FXML
+    private ComboBox relationBox;
+
+    @FXML
+    private ComboBox<String> relationComboBox;
+
+    @FXML
+    ObservableList<String> relationshipList = FXCollections.observableArrayList("Classmates", "Collegues", "Friends", "Parents");
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        relationComboBox.getItems().addAll("Classmates", "Collegues", "Friends", "Parents");
 
         firstFriendColumn.setCellValueFactory(new PropertyValueFactory<Relationships, String>("firstFriend"));
         secondFriendColumn.setCellValueFactory(new PropertyValueFactory<Relationships, String>("secondFriend"));
@@ -78,7 +85,7 @@ public class RelationshipController implements Initializable {
     /**
      * This method will remove the selected row(s) from the table
      */
-    public void deleteButtonPushed() {
+    public void deleteRelationshipButtonPushed() {
         ObservableList<Relationships> selectedRows, allRelations;
         allRelations = tableViewRelationships.getItems();
 
@@ -86,10 +93,13 @@ public class RelationshipController implements Initializable {
         selectedRows = tableViewRelationships.getSelectionModel().getSelectedItems();
 
         //Loop over selected rows and remove the person object from the table
-/*        for (Relationships relationships : selectedRows) {
-            allRelationships.remove(relationships);
-        }  */
+        for (Relationships relationships : selectedRows) {
+            allRelations.remove(relationships);
+        }
+    }
 
+    public void relationComboChanged(ActionEvent actionEvent) {
+        relationshipField.setText(relationComboBox.getValue());
     }
 
     /**
