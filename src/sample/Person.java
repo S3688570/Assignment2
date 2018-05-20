@@ -1,3 +1,5 @@
+
+
 package sample;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -99,5 +101,10 @@ public class Person {
     public void setState(String state) {
         this.state = new SimpleStringProperty(state);
     }
-}
 
+    public void setFirstFriend() {
+    }
+
+    public void setSecondFriend() {
+    }
+}

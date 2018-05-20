@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,9 +12,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,6 +46,10 @@ public class MainController implements Initializable {
     private TableColumn<Person, String> ageColumn;
     @FXML
     private TableColumn<Person, String> stateColumn;
+
+    @FXML
+    Button btnPrintProfile = new Button("Print Profile");
+
 
     @FXML
     private Button relationshipBtn;
@@ -160,7 +168,6 @@ public class MainController implements Initializable {
 
         //Get all items from table as a list, then add the new profile to the list
         tableView.getItems().add(newProfile);
-
     }
 
     /**
@@ -197,10 +204,10 @@ public class MainController implements Initializable {
             System.err.println("No Such File.");
             System.exit(0);
         }
-
         input.close();
         return people;
     }
+
 
 
 

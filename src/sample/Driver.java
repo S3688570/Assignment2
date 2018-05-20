@@ -65,13 +65,13 @@ public class Driver {
                     menuOpt.displayMenu();
                     break;
 
-                //Connect two people as friends
+        /*        //Connect two people as friends
                 case 4:
                     //Retrieve and check ages of friends and make friends if OK
                     SetFriends setFriends = new SetFriends();
                     setFriends.checkAges();
                     menuOpt.displayMenu();
-                    break;
+                    break;  */
 
                 //Are two people friends?
                 case 5:

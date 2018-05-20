@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,16 @@ import java.util.Scanner;
 
 public class RelationshipController implements Initializable {
 
+    @FXML SimpleStringProperty relationshipType;
+
+    @FXML SimpleStringProperty friend;
+
+    @FXML SimpleStringProperty couple;
+
+    @FXML SimpleStringProperty parent;
+
+    @FXML
+    private SimpleStringProperty searchPersonName;
     @FXML
     private TableView<Relationships> tableViewRelationships;
     @FXML
@@ -101,6 +112,7 @@ public class RelationshipController implements Initializable {
     public void relationComboChanged(ActionEvent actionEvent) {
         relationshipField.setText(relationComboBox.getValue());
     }
+
 
     /**
      * This method will create a new profile  and add it to the table
