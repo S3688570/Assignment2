@@ -20,26 +20,19 @@ public class LoadRelationships {
     /**
      * This method loads data from a text file
      */
-    public ObservableList<Relationships> getRelationships() {
+    public ObservableList<Relationships> getRelationships() throws Exception {
         ObservableList<Relationships> relationships = FXCollections.observableArrayList();
         Scanner input = null;
         String line = null;
 
-        try {
-            input = new Scanner(new File("C:\\Data\\Relationships.txt"));
-            while (input.hasNextLine()) {
-                String data[] = input.nextLine().split(",");
-                relationships.add(new Relationships(data[0], data[1], data[2]));
-            }
-
-        } catch (FileNotFoundException e) {
-            System.err.println("No Such File.");
-            System.exit(0);
+        input = new Scanner(new File("C:\\Data\\Relationships2.txt"));
+        while (input.hasNextLine()) {
+            String data[] = input.nextLine().split(",");
+            relationships.add(new Relationships(data[0], data[1], data[2]));
         }
-
-        input.close();
         return relationships;
     }
 }
+
 
 

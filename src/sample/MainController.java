@@ -10,14 +10,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 /**
  * FMXL Controller class
@@ -41,6 +39,9 @@ public class MainController implements Initializable {
     private TableColumn<Person, String> ageColumn;
     @FXML
     private TableColumn<Person, String> stateColumn;
+
+    @FXML
+    private Label outputLabel;
 
     @FXML
     Button btnPrintProfile = new Button("Print Profile");
@@ -99,6 +100,7 @@ public class MainController implements Initializable {
     /**
      * Initializes the MainController class. This method is automatically called
      * after the fxml file has been loaded.
+     *
      * @param location
      * @param resources
      */
@@ -109,6 +111,7 @@ public class MainController implements Initializable {
         genderComboBox.getItems().addAll("F", "M");
         stateComboBox.getItems().addAll("ACT", "QLD", "NSW", "NT", "SA", "TAS", "VIC", "WA");
 
+        //Initializes the people table containing 6 columns
         nameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("name"));
         imageColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("image"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("status"));
@@ -116,9 +119,21 @@ public class MainController implements Initializable {
         ageColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("age"));
         stateColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("state"));
 
-        //Load data
+        /**
+         * This method loads the relationship data
+         */
         Array array = new Array();
-        tableView.setItems(array.getPeople());
+        try {
+            tableView.setItems(array.getPeople());
+            System.out.println("Test OK");
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Database file does not exist!");
+            alert.setContentText("Please try the database file.");
+
+            alert.showAndWait();
+        }
 
         //Update table to allow for name fields to be editable
         tableView.setEditable(true);
@@ -131,7 +146,6 @@ public class MainController implements Initializable {
 
         //This will allow the user to select multiple rows at once
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
     }
 
     /**
@@ -153,16 +167,17 @@ public class MainController implements Initializable {
         //this gives us rows that are selected
         selectedRows = tableView.getSelectionModel().getSelectedItems();
 
-        //Loop over selected rows and remove the person object from the table
         for (Person person : selectedRows) {
             allPeople.remove(person);
         }
     }
 
+    /**
+     * This method transfers information from the gender and state comboboxes to the corresponding text fields
+     */
     public void comboChanged(ActionEvent actionEvent) {
         genderField.setText(genderComboBox.getValue());
         stateField.setText(stateComboBox.getValue());
-        //    combobox.getItems().addAll("Ram", "Ban", "STEVE", "Ma");
     }
 
     /**

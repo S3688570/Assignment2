@@ -37,7 +37,7 @@ public class MiniNet extends Application {
     }
 
 
-    public static void main(String[] args) throws MyExceptions {
+    public static void main(String[] args) throws Exception {
 
         launch(args);
 
@@ -58,5 +58,3 @@ public class MiniNet extends Application {
         menu.displayMenu();
     }
 }
-
-

@@ -100,21 +100,17 @@ public class AddRelationships extends Array {
     public void checkAges() {
 
         //Enter first friend
-        //    System.out.println("Please enter the name of the first person: ");
-        //    firstFriend = input.nextLine();
-        while (!firstFriend.matches("[a-zA-Z ]+")) {
+/*        while (!firstFriend.matches("[a-zA-Z ]+")) {
             System.out.println("Woops that's not a name!! Please try again: ");
         }
 
         //Enter second friend
-        //    System.out.println("Please enter the name of the second person: ");
-        //    secondFriend = input.nextLine();
         while (!secondFriend.matches("[a-zA-Z ]+")) {
             System.out.println("Woops that's not a name!! Please try again: ");
         }
 
         //Retrieve the ages for the two friends
-/*        for (int i = 0; i < people.size(); i++) {
+        for (int i = 0; i < people.size(); i++) {
             if (firstFriend.equalsIgnoreCase(people.get(i).getName())) {
                 firstPersonAge = Integer.parseInt(people.get(i).getAge());
                 ageFirstOK = true;
@@ -124,18 +120,17 @@ public class AddRelationships extends Array {
             } else if (ageFirstOK == false || ageSecondOK == false) {
                 System.out.println("One of these people is not on this database");
             }
-        }  */
-    }
+        } */
 
-
-    //The age difference between two friends that are less than 16 years in age can not be more than 3 years
- /*       public static void checkAge(int firstPersonAge, int secondPersonAge) throws Exception{
-            int ageDiff = Math.abs(firstPersonAge - secondPersonAge);
-            if (firstPersonAge > 2 && firstPersonAge < 16 || secondPersonAge > 2 && secondPersonAge < 16) {
+        //Check for age exception (should be less than 3 years between 2 children)
+/*         public void checkAge(firstPersonAge, secondPersonAge) throws Exception {
+            boolean ageOK = false;
+            if ((firstPersonAge > 2 && firstPersonAge < 16) && (secondPersonAge > 2 && secondPersonAge < 16)) {
                 try {
-                    if (ageDiff > 3 && relationshipType == friend) {
-                        Relationships addRelationship = new Relationships();
-                        addRelationship.addFriend();
+                    int ageDiff = Math.abs(firstPersonAge - secondPersonAge);
+                    if (ageDiff > 3) {
+                        ageOK = true;
+                        return ageOK;
                     }
                 }
                 catch(Exception e) {
@@ -143,5 +138,9 @@ public class AddRelationships extends Array {
                 }
             }
 
-            }  */
+            } */
+    }
 }
+
+
+

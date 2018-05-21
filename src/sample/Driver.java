@@ -15,7 +15,7 @@ public class Driver {
     }
 
     //Method to display menu and take input
-    public void displayMenu() throws MyExceptions {
+    public void displayMenu() throws Exception {
 
         if (option != 8) {
             do {
@@ -115,7 +115,6 @@ public class Driver {
         }
     }
 }
-
 
 
 
