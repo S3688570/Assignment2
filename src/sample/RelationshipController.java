@@ -30,9 +30,13 @@ public class RelationshipController implements Initializable {
 
     @FXML SimpleStringProperty friend;
 
-    @FXML SimpleStringProperty couple;
+    @FXML SimpleStringProperty classmates;
 
-    @FXML SimpleStringProperty parent;
+    @FXML SimpleStringProperty collegues;
+
+    @FXML SimpleStringProperty parents;
+
+    @FXML SimpleStringProperty couples;
 
     @FXML
     private SimpleStringProperty searchPersonName;
@@ -72,7 +76,8 @@ public class RelationshipController implements Initializable {
         relationshipColumn.setCellValueFactory(new PropertyValueFactory<Relationships, String>("relationship"));
 
         //Load data
-        tableViewRelationships.setItems(getRelationships());
+        LoadRelationships loadRelationships = new LoadRelationships();
+        tableViewRelationships.setItems(loadRelationships.getRelationships());
 
         //Update table to allow for name fields to be editable
         tableViewRelationships.setEditable(true);
@@ -140,7 +145,7 @@ public class RelationshipController implements Initializable {
     /**
      * This method loads data from a text file
      */
-    public ObservableList<Relationships> getRelationships() {
+/*    public ObservableList<Relationships> getRelationships() {
         ObservableList<Relationships> relationships = FXCollections.observableArrayList();
         Scanner input = null;
         String line = null;
@@ -159,6 +164,5 @@ public class RelationshipController implements Initializable {
 
         input.close();
         return relationships;
-    }
-
+    }  */
 }

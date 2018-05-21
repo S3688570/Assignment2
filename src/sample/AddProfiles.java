@@ -160,8 +160,6 @@ public class AddProfiles extends Array {
         } while (error == true);
 
         //Add new profile to ArrayList
-        list.add(new Person(newName, newImage, newStatus, newGender, newAge, newState));
-        super.printArray();
+        people.add(new Person(newName, newImage, newStatus, newGender, newAge, newState));
     }
 }
-

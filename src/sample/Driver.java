@@ -61,7 +61,7 @@ public class Driver {
                 //Output all profiles
                 case 3:
                     Array array2 = new Array();
-                    array2.printArray();
+                    array2.getPeople();
                     menuOpt.displayMenu();
                     break;
 

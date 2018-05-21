@@ -35,15 +35,15 @@ public class FindChildren extends Array {
         } while (error == true);
 
 
-        for (int i = 0; i < list.size(); i++) {
-            if (parent.equalsIgnoreCase(list.get(i).getName())) {
-                System.out.println(list.get(i).getName());
+        for (int i = 0; i < people.size(); i++) {
+            if (parent.equalsIgnoreCase(people.get(i).getName())) {
+                System.out.println(people.get(i).getName());
                 System.out.println();
             }
         }
 
-        for (int i = 0; i < list.size(); i++) {
-            if (parent.equalsIgnoreCase(list.get(i).getName())) {
+        for (int i = 0; i < people.size(); i++) {
+            if (parent.equalsIgnoreCase(people.get(i).getName())) {
                 parentNumber = 5;
             }
         }
@@ -54,5 +54,3 @@ public class FindChildren extends Array {
         }
     }
 }
-
-

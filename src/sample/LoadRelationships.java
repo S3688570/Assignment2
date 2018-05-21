@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -8,17 +11,17 @@ import java.util.Scanner;
 public class LoadRelationships {
 
     //Created by Charles Galea (March 2018)
-    static ArrayList<Relationships> listRelationships = new ArrayList<>();
+
+    ObservableList<Relationships> relationships = FXCollections.observableArrayList();
 
     public LoadRelationships() {
     }
 
-    public LoadRelationships(ArrayList listRelationships) {
-        this.listRelationships = listRelationships;
-    }
-
-    //Load array
-    public void loadRelations() {
+    /**
+     * This method loads data from a text file
+     */
+    public ObservableList<Relationships> getRelationships() {
+        ObservableList<Relationships> relationships = FXCollections.observableArrayList();
         Scanner input = null;
         String line = null;
 
@@ -26,7 +29,7 @@ public class LoadRelationships {
             input = new Scanner(new File("C:\\Data\\Relationships.txt"));
             while (input.hasNextLine()) {
                 String data[] = input.nextLine().split(",");
-                listRelationships.add(new Relationships(data[0], data[1], data[2]));
+                relationships.add(new Relationships(data[0], data[1], data[2]));
             }
 
         } catch (FileNotFoundException e) {
@@ -35,14 +38,7 @@ public class LoadRelationships {
         }
 
         input.close();
-    }
-
-    //Print the social network
-    public void printRelationships() {
-        for (int i = 0; i < listRelationships.size(); i++) {
-            System.out.println(listRelationships.get(i) + " ");
-            System.out.println();
-        }
+        return relationships;
     }
 }
 

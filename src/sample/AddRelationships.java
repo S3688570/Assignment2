@@ -1,7 +1,5 @@
 package sample;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.Scanner;
 
 public class AddRelationships extends Array {
@@ -18,6 +16,13 @@ public class AddRelationships extends Array {
     private int firstPersonAge;
     private int secondPersonAge;
     private String relationship;
+    private String relationshipType;
+    private String friends;
+    private String classmates;
+    private String collegues;
+    private String parents;
+    private String couples;
+
 
     //Construct default SetFriends object
     public AddRelationships() {
@@ -109,22 +114,22 @@ public class AddRelationships extends Array {
         }
 
         //Retrieve the ages for the two friends
-        for (int i = 0; i < list.size(); i++) {
-            if (firstFriend.equalsIgnoreCase(list.get(i).getName())) {
-                firstPersonAge = Integer.parseInt(list.get(i).getAge());
+/*        for (int i = 0; i < people.size(); i++) {
+            if (firstFriend.equalsIgnoreCase(people.get(i).getName())) {
+                firstPersonAge = Integer.parseInt(people.get(i).getAge());
                 ageFirstOK = true;
-            } else if (secondFriend.equalsIgnoreCase(list.get(i).getName())) {
-                secondPersonAge = Integer.parseInt(list.get(i).getAge());
+            } else if (secondFriend.equalsIgnoreCase(people.get(i).getName())) {
+                secondPersonAge = Integer.parseInt(people.get(i).getAge());
                 ageSecondOK = true;
             } else if (ageFirstOK == false || ageSecondOK == false) {
                 System.out.println("One of these people is not on this database");
             }
-        }
+        }  */
     }
 
 
     //The age difference between two friends that are less than 16 years in age can not be more than 3 years
-/*        public static void checkAge(int firstPersonAge, int secondPersonAge) throws Exception{
+ /*       public static void checkAge(int firstPersonAge, int secondPersonAge) throws Exception{
             int ageDiff = Math.abs(firstPersonAge - secondPersonAge);
             if (firstPersonAge > 2 && firstPersonAge < 16 || secondPersonAge > 2 && secondPersonAge < 16) {
                 try {
@@ -138,8 +143,5 @@ public class AddRelationships extends Array {
                 }
             }
 
-            } */
+            }  */
 }
-
-
-

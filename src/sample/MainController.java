@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,10 +14,7 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -56,9 +51,6 @@ public class MainController implements Initializable {
 
     @FXML
     public Label myLabel;
-/*  @FXML
-    public ComboBox<String> genderComboBox;
-    public ComboBox<String> stateComboBox; */
 
     @FXML
     ObservableList<String> genderList = FXCollections.observableArrayList("F", "M");
@@ -88,14 +80,32 @@ public class MainController implements Initializable {
     @FXML
     private ComboBox<String> stateComboBox;
 
+    //Reference to the main application
+    private MiniNet mininet;
 
+    //Reference to the Array class
+    private Array array;
 
- /*   @FXML
-    public TableView<String> listview;  */
+    public Button getBtnPrintProfile() {
+        return btnPrintProfile;
+    }
 
+    /**
+     * The contructor called before the initialize() method
+     */
+    public MainController() {
+    }
 
+    /**
+     * Initializes the MainController class. This method is automatically called
+     * after the fxml file has been loaded.
+     * @param location
+     * @param resources
+     */
+    @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Initializes the comboboxes for selecting gender and state
         genderComboBox.getItems().addAll("F", "M");
         stateComboBox.getItems().addAll("ACT", "QLD", "NSW", "NT", "SA", "TAS", "VIC", "WA");
 
@@ -107,7 +117,8 @@ public class MainController implements Initializable {
         stateColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("state"));
 
         //Load data
-        tableView.setItems(getPeople());
+        Array array = new Array();
+        tableView.setItems(array.getPeople());
 
         //Update table to allow for name fields to be editable
         tableView.setEditable(true);
@@ -121,12 +132,7 @@ public class MainController implements Initializable {
         //This will allow the user to select multiple rows at once
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-
-        //    listview.setItems(list);
-        //    listview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
     }
-
 
     /**
      * This method will allow the user to double click  on a cell and update
@@ -151,7 +157,6 @@ public class MainController implements Initializable {
         for (Person person : selectedRows) {
             allPeople.remove(person);
         }
-
     }
 
     public void comboChanged(ActionEvent actionEvent) {
@@ -184,32 +189,6 @@ public class MainController implements Initializable {
 
 
 
-    /**
-     * This method loads data from a text file
-     */
-    //Load array
-    public ObservableList<Person> getPeople() {
-        ObservableList<Person> people = FXCollections.observableArrayList();
-        Scanner input = null;
-        String line = null;
-
-        try {
-            input = new Scanner(new File("C:\\Data\\Database2.txt"));
-            while (input.hasNextLine()) {
-                String data[] = input.nextLine().split(",");
-                people.add(new Person(data[0], data[1], data[2], data[3], data[4], data[5]));
-            }
-
-        } catch (FileNotFoundException e) {
-            System.err.println("No Such File.");
-            System.exit(0);
-        }
-        input.close();
-        return people;
-    }
-
-
-
 
  /*   @FXML
      private void changeScreenButtonPushed(ActionEvent event) throws Exception {
@@ -222,13 +201,6 @@ public class MainController implements Initializable {
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     } */
-
-
-
-
-
-
-
 
 
 

@@ -32,7 +32,6 @@ public class MiniNet extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
@@ -44,13 +43,13 @@ public class MiniNet extends Application {
 
 
 
-        Array array = new Array();
+/*        Array array = new Array();
         array.loadArray();
-        array.printArray();
+        array.printArray(); */
 
-        LoadRelationships relationships = new LoadRelationships();
-        relationships.loadRelations();
-        relationships.printRelationships();
+/*        LoadRelationships loadRelationships = new LoadRelationships();
+        loadRelationships.LoadRelations();
+        loadRelationships.printRelationships();  */
 
         //    LoadDatabase database = new LoadDatabase();
         //   database.loadDatabase();

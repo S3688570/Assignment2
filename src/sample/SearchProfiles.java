@@ -24,8 +24,8 @@ public class SearchProfiles extends Array{
         } while (error == true);
 
         boolean person = false;
-        for (int i = 0; i < list.size(); i++) {
-            if (searchPersonName.equalsIgnoreCase(list.get(i).getName())) {
+        for (int i = 0; i < people.size(); i++) {
+            if (searchPersonName.equalsIgnoreCase(people.get(i).getName())) {
                 person = true;
             }
         }
@@ -34,9 +34,9 @@ public class SearchProfiles extends Array{
         }
 
         //Print profile for selected person
-        for (int i=0; i<list.size(); i++) {
-            if (searchPersonName.equalsIgnoreCase(list.get(i).getName())) {
-                return list.get(i);
+        for (int i=0; i<people.size(); i++) {
+            if (searchPersonName.equalsIgnoreCase(people.get(i).getName())) {
+                return people.get(i);
             }
         }
         return null;

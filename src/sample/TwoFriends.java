@@ -28,8 +28,8 @@ public class TwoFriends extends LoadRelationships {
             firstPerson = input.nextLine();
         }
 
-        for (int i = 0; i < listRelationships.size(); i++) {
-            if (firstPerson.equalsIgnoreCase(listRelationships.get(i).getFirstFriend()) | firstPerson.equalsIgnoreCase(listRelationships.get(i).getSecondFriend())) {
+        for (int i = 0; i < relationships.size(); i++) {
+            if (firstPerson.equalsIgnoreCase(relationships.get(i).getFirstFriend()) | firstPerson.equalsIgnoreCase(relationships.get(i).getSecondFriend())) {
                 firstPersonNumber = 5;
             }
         }
@@ -50,8 +50,8 @@ public class TwoFriends extends LoadRelationships {
         }
         System.out.println();
 
-        for (int i = 0; i < listRelationships.size(); i++) {
-            if (secondPerson.equalsIgnoreCase(listRelationships.get(i).getFirstFriend()) | secondPerson.equalsIgnoreCase(listRelationships.get(i).getSecondFriend())) {
+        for (int i = 0; i < relationships.size(); i++) {
+            if (secondPerson.equalsIgnoreCase(relationships.get(i).getFirstFriend()) | secondPerson.equalsIgnoreCase(relationships.get(i).getSecondFriend())) {
                 secondPersonNumber = 5;
             }
         }
@@ -62,11 +62,11 @@ public class TwoFriends extends LoadRelationships {
         }
 
         //Determine the two people are friends
-        for (int i = 0; i < listRelationships.size(); i++) {
-            if (firstPerson.equalsIgnoreCase(listRelationships.get(i).getFirstFriend())) {
-                firstPersonFriends = ((listRelationships.get(i).getFirstFriend()));
-            } else if (firstPerson.equalsIgnoreCase(listRelationships.get(i).getSecondFriend())) {
-                secondPersonFriends = ((listRelationships.get(i).getSecondFriend()));
+        for (int i = 0; i < relationships.size(); i++) {
+            if (firstPerson.equalsIgnoreCase(relationships.get(i).getFirstFriend())) {
+                firstPersonFriends = ((relationships.get(i).getFirstFriend()));
+            } else if (firstPerson.equalsIgnoreCase(relationships.get(i).getSecondFriend())) {
+                secondPersonFriends = ((relationships.get(i).getSecondFriend()));
             }
         }
 
