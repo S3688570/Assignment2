@@ -3,9 +3,15 @@ package sample;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * LoadDatabase class. (For uploading a SQL dataset).
+ *
+ * @author cgalea
+ */
+
 public class LoadDatabase {
 
-  /*  public void loadDatabase() {
+ /*   public void loadDatabase() {
         Connection con = null;
 
         try {

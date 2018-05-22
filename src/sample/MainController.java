@@ -12,18 +12,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * FMXL Controller class
+ * FMXL MainController. (For the initialization and control of the MiniNet GUI).
  *
  * @author cgalea
  */
-
 public class MainController implements Initializable {
+
+    private final Person currentTask = new Person();
+
+    private final ObservableList<Person> people = FXCollections.observableArrayList();
 
     @FXML
     private TableView<Person> tableView;
@@ -39,9 +44,14 @@ public class MainController implements Initializable {
     private TableColumn<Person, String> ageColumn;
     @FXML
     private TableColumn<Person, String> stateColumn;
+    @FXML
+    private Image image1;
 
     @FXML
     private Label outputLabel;
+
+    @FXML
+    private TableView<Person> tasksTable;
 
     @FXML
     Button btnPrintProfile = new Button("Print Profile");
@@ -68,6 +78,12 @@ public class MainController implements Initializable {
     private TextField genderField;
     @FXML
     private TextField ageField;
+
+    @FXML
+    public TextField getAgeField() {
+        return ageField;
+    }
+
     @FXML
     private TextField stateField;
 
@@ -85,7 +101,7 @@ public class MainController implements Initializable {
     private MiniNet mininet;
 
     //Reference to the Array class
-    private Array array;
+    private TextDatabase array;
 
     public Button getBtnPrintProfile() {
         return btnPrintProfile;
@@ -122,10 +138,9 @@ public class MainController implements Initializable {
         /**
          * This method loads the relationship data
          */
-        Array array = new Array();
+        TextDatabase array = new TextDatabase();
         try {
             tableView.setItems(array.getPeople());
-            System.out.println("Test OK");
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning Dialog");
@@ -201,35 +216,4 @@ public class MainController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
-
-
-
-
- /*   @FXML
-     private void changeScreenButtonPushed(ActionEvent event) throws Exception {
-        GridPane pane
-    }  */
-
-/*    public void changeScreenButtonPushed(ActionEvent event) throws Exception {
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("makeRelationship.fxml"));
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    } */
-
-
-
-
- /*      public void buttonAction(ActionEvent actionEvent) {
-        //    myLabel.setText(combobox.getValue());
-        //listview.getItems().addAll("Ram", "Ban", "STEVE", "Ma");
-
-        ObservableList<Person> names;
-        names = tableView.getSelectionModel().getSelectedItems();
-        for (String name : names) {
-            System.out.println(names);
-
-        }
-
-    }  */
 }

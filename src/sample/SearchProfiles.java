@@ -1,17 +1,24 @@
 package sample;
 
-import java.util.Scanner;
-
-public class SearchProfiles extends Array{
-    //Created by Charles Galea (March 2018)
+/**
+ * SearchProfiles class. (For outputing a person's profile).
+ *
+ * @author cgalea
+ */
+public class SearchProfiles extends TextDatabase {
 
     private String searchPersonName;
 
+    /**
+     * Default constructor.
+     */
     public SearchProfiles() {
     }
 
-    //Method to select person's profile
-    public Person searchName() throws MyExceptions{
+    /**
+     * Method to select person's profile
+     */
+    public Person searchName() throws MyExceptions {
         //Input person's name
         boolean error = false;
         do {
@@ -34,7 +41,7 @@ public class SearchProfiles extends Array{
         }
 
         //Print profile for selected person
-        for (int i=0; i<people.size(); i++) {
+        for (int i = 0; i < people.size(); i++) {
             if (searchPersonName.equalsIgnoreCase(people.get(i).getName())) {
                 return people.get(i);
             }
@@ -42,3 +49,4 @@ public class SearchProfiles extends Array{
         return null;
     }
 }
+

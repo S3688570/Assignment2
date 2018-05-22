@@ -8,16 +8,21 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Array extends Person{
+/**
+ * TextDatabase class. (For loading personal profile data into an ObservableList).
+ *
+ * @author cgalea
+ */
+public class TextDatabase extends Person {
     //Created by Charles Galea (March 2018)
-
-    public Array() {
-    }
 
     ObservableList<Person> people = FXCollections.observableArrayList();
 
+    public TextDatabase() {
+    }
+
     /**
-     * Constructor
+     * Constructor for Array class.
      *
      * @param name
      * @param image
@@ -26,10 +31,13 @@ public class Array extends Person{
      * @param age
      * @param state
      */
-    public Array(String name, String image, String status, String gender, String age, String state) {
+    public TextDatabase(String name, String image, String status, String gender, String age, String state) {
         super(name, image, status, gender, age, state);
     }
 
+    public void setPeople(ObservableList<Person> people) {
+        this.people = people;
+    }
 
     /**
      * This method loads data from a text file and returns an observable list of people
@@ -47,3 +55,8 @@ public class Array extends Person{
         return people;
     }
 }
+
+
+
+
+

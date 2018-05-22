@@ -19,6 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * FXML RelationshipController. (For initialization and control of Relationships GUI).
+ *
+ * @author cgalea
+ */
 public class RelationshipController implements Initializable {
 
     @FXML
@@ -38,6 +43,18 @@ public class RelationshipController implements Initializable {
 
     @FXML
     SimpleStringProperty couples;
+
+    @FXML
+    String errMsg;
+
+    @FXML
+    String firstFriend;
+
+    @FXML
+    String secondFriend;
+
+    @FXML
+    int error;
 
     @FXML
     private SimpleStringProperty searchPersonName;
@@ -72,7 +89,6 @@ public class RelationshipController implements Initializable {
     private int firstPersonAge;
     private int secondPersonAge;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -82,6 +98,7 @@ public class RelationshipController implements Initializable {
         firstFriendColumn.setCellValueFactory(new PropertyValueFactory<Relationships, String>("firstFriend"));
         secondFriendColumn.setCellValueFactory(new PropertyValueFactory<Relationships, String>("secondFriend"));
         relationshipColumn.setCellValueFactory(new PropertyValueFactory<Relationships, String>("relationship"));
+
 
         /**
          * This method loads the relationship data
@@ -97,7 +114,6 @@ public class RelationshipController implements Initializable {
 
             alert.showAndWait();
         }
-
 
         //Update table to allow for name fields to be editable
         tableViewRelationships.setEditable(true);
@@ -119,6 +135,7 @@ public class RelationshipController implements Initializable {
         Relationships relationSelected = tableViewRelationships.getSelectionModel().getSelectedItem();
         relationSelected.setFirstFriend(editedRelationCell.getNewValue().toString());
     }
+
 
     /**
      * This method will remove the selected row(s) from the table
@@ -144,11 +161,29 @@ public class RelationshipController implements Initializable {
     /**
      * This method will create a new profile  and add it to the table
      */
-    public void addNewRelationshipProfile() {
-        Relationships newProfile = new Relationships(firstFriendField.getText(), secondFriendField.getText(), relationshipField.getText());
+    public void addNewRelationshipProfile() throws Exception {
+        firstFriend = firstFriendField.getText();
+        SimpleStringProperty firstSimpFriend = new SimpleStringProperty(firstFriend);
+        secondFriend = secondFriendField.getText();
+        SimpleStringProperty secondSimpFriend = new SimpleStringProperty(secondFriend);
 
-        //Get all items from table as a list, then add the new profile to the list
-        tableViewRelationships.getItems().add(newProfile);
+        //    AddRelationships addRel = new AddRelationships();
+        //    addRel.checkAge(firstSimpFriend, secondSimpFriend);
+        try {
+            if (error != 1) {
+                Relationships newProfile = new Relationships(firstFriendField.getText(), secondFriendField.getText(), relationshipField.getText());
+
+                //Get all items from table as a list, then add the new profile to the list
+                tableViewRelationships.getItems().add(newProfile);
+            }
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("These people cannot be friends.");
+            alert.setContentText("They are either too young or the age difference is too great");
+
+            alert.showAndWait();
+        }
     }
 
 
@@ -156,46 +191,10 @@ public class RelationshipController implements Initializable {
      * This method will create a new GUI window for relationships
      */
     public void relationshipScreenButtonPushed(ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("mainController.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
-
-    /**
-     * This method will form a relationship between two people
-     * @param person
-     */
-/*    public void addFriend(Person person) {
-        selectedFirstPerson = person;
-        firstPersonAge.setInt(selectedFirstperson.getAge();
-        selectedSecondPerson = person;
-        secondPersonAge.person.getAge();
-        } */
-
-
-    /**
-     * This method loads data from a text file
-     */
-/*    public ObservableList<Relationships> getRelationships() {
-        ObservableList<Relationships> relationships = FXCollections.observableArrayList();
-        Scanner input = null;
-        String line = null;
-
-        try {
-            input = new Scanner(new File("C:\\Data\\Relationships.txt"));
-            while (input.hasNextLine()) {
-                String data[] = input.nextLine().split(",");
-                relationships.add(new Relationships(data[0], data[1], data[2]));
-            }
-
-        } catch (FileNotFoundException e) {
-            System.err.println("No Such File.");
-            System.exit(0);
-        }
-
-        input.close();
-        return relationships;
-    }  */
 }

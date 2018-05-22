@@ -8,9 +8,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * LoadRelationships class. (For uploading data describing the relationships
+ * between people in the database).
+ *
+ * @author cgalea
+ */
 public class LoadRelationships {
-
-    //Created by Charles Galea (March 2018)
 
     ObservableList<Relationships> relationships = FXCollections.observableArrayList();
 
@@ -25,7 +29,7 @@ public class LoadRelationships {
         Scanner input = null;
         String line = null;
 
-        input = new Scanner(new File("C:\\Data\\Relationships2.txt"));
+        input = new Scanner(new File("C:\\Data\\Relationships.txt"));
         while (input.hasNextLine()) {
             String data[] = input.nextLine().split(",");
             relationships.add(new Relationships(data[0], data[1], data[2]));
@@ -33,6 +37,5 @@ public class LoadRelationships {
         return relationships;
     }
 }
-
 
 

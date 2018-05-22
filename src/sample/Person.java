@@ -3,8 +3,9 @@ package sample;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
- * Model class for a Person
- * @author Charles Galea
+ * Person class. (For generating a peron's profile).
+ *
+ * @author cgalea
  */
 
 public class Person {
@@ -15,10 +16,23 @@ public class Person {
     private SimpleStringProperty age;
     private SimpleStringProperty state;
 
+    /**
+     * Default constructor.
+     */
     public Person() {
 
     }
 
+    /**
+     * Constructor with defined parameters.
+     *
+     * @param name
+     * @param image
+     * @param status
+     * @param gender
+     * @param age
+     * @param state
+     */
     public Person(String name, String image, String status, String gender, String age, String state) {
         this.name = new SimpleStringProperty(name);
         this.image = new SimpleStringProperty(image);
